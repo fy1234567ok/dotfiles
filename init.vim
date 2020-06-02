@@ -24,3 +24,17 @@ Plug 'vim-scripts/javacomplete'
 
 call plug#end()
 
+" NerdTree Config
+map <F2> :NERDTreeToggle<CR>
+autocmd vimenter * if !argc() | NERDTree | endif
+
+" TagBar Config
+map <F8> :TagbarToggle<CR>
+
+
+"syntastic 保存检查代码时候传入参数  
+" let g:syntastic_java_javac_args="-cp ../../lib:../../bin -sourcepath ../../bin -Djava.ext.dirs=../../lib -d ../../bin"  
+
+" run and compile java file
+map <F5> :!cd %:p:h && java -cp ../../bin -Djava.ext.dirs=../../lib %:p:h:t.%:p:t:r  
+map <F4> :!cd %:p:h && javac -cp ../../lib:../../bin -sourcepath ../../bin -Djava.ext.dirs=../../lib -d ../../bin *.java  
